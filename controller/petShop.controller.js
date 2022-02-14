@@ -1,6 +1,6 @@
 const db = require("../config/db");
 
-function insertPetStore(req, res) {
+function insertPetShop(req, res) {
   let data = [
     req.body.petId,
     req.body.quantity,
@@ -15,7 +15,7 @@ function insertPetStore(req, res) {
   res.send({ message: "Data has been inserted", data: data });
 }
 
-function listPetStore(req, res) {
+function listPetShop(req, res) {
   let selectQuery = `SELECT * FROM petShop`;
   db.query(selectQuery, function (error, results, fields) {
     if (error) throw error;
@@ -23,7 +23,7 @@ function listPetStore(req, res) {
   });
 }
 
-function updatePetStore(req, res) {
+function updatePetShop(req, res) {
   let updateQuery = `UPDATE petShop SET petId =?, quantity =?, status=?, completed=? WHERE id = ?`;
   let data = [
     req.body.petId,
@@ -40,7 +40,7 @@ function updatePetStore(req, res) {
   res.send({ message: "Data has been updated", data: req.body });
 }
 
-function deletePetStore(req, res) {
+function deletePetShop(req, res) {
   let deleteQuery = `DELETE FROM petShop WHERE id = ?`;
   let data = [req.params.id];
 
@@ -51,8 +51,8 @@ function deletePetStore(req, res) {
 }
 
 module.exports = {
-  insertPetStore,
-  listPetStore,
-  updatePetStore,
-  deletePetStore,
+  insertPetShop,
+  listPetShop,
+  updatePetShop,
+  deletePetShop,
 };
